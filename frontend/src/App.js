@@ -1,22 +1,18 @@
-
-import React, {useState} from "react";
-
-
+import React, { useState } from "react";
+import Navbar from "./conponents/Navbar";
 
 function App() {
-
   const [searchInput, setSearchInput] = useState("");
 
   const onChange = (e) => {
-    console.log("Search Clicked")
-  }
+    console.log("Search Clicked");
+  };
 
-  const SearchBar = ({ keyword, onChange }) => {
-    }
+  const SearchBar = ({ keyword, onChange }) => {};
   return (
     <div>
-      <h1>Playlisters</h1>
-      <button>login</button>
+      <Navbar />
+      {/* <button>login</button>
       <button>signup</button>
       <input
         type="text"
@@ -24,13 +20,9 @@ function App() {
         value={searchInput}
         onChange={(event) => setSearchInput(event.target.value)}
       />
-      <button onClick={() => onChange(searchInput)}>Search</button>
-      
+      <button onClick={() => onChange(searchInput)}>Search</button> */}
     </div>
   );
 }
 
 export default App;
-
-
-  
