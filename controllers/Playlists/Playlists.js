@@ -39,3 +39,27 @@ exports.searchPlaylists = async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 };
+//////
+
+exports.userPlaylists = async (req, res) => {
+  const { q } = req.query;
+  try {
+    const response = await youtube.search.list({
+      part: "id,snippet",
+      q,
+      type: "playlist",
+    });
+    const playlists = response.data.items.map.id((item) => {
+      const { id, snippet } = item;
+      return {
+        id: id.playlistId,
+        title: snippet.title,
+        description: snippet.description,
+        thumbnail: snippet.thumbnails.default.url,
+      };
+    });
+    res.json(playlists);
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
