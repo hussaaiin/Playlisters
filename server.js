@@ -1,21 +1,19 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const session = require("express-session");
-const bodyParser = require("body-parser");
+const express = require('express')
+const mongoose = require('mongoose')
+const expressLayouts = require('express-ejs-layouts')
+const session = require('express-session')
+const bodyParser = require('body-parser')
 const passport = require("./config/Auth/passportConfig");
 
 const app = express();
 
 require("dotenv").config(); // Load environment variables from .env file
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: false,
-    cookie: { maxAge: 600000000 },
-  })
-);
+app.use(session({
+  secret: 'your-secret-value', // Provide a secure and random secret value here
+  // Other session configuration options...
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -25,14 +23,16 @@ app.use(bodyParser.json());
 
 //<--import routers-->>
 const playlistRoute = require("./routes/Playlists");
+const authRoute = require("./routes/auth")
 
 //<--mount routes-->>
 
 app.use("/", playlistRoute);
+app.use("/", authRoute)
 
-const port = 4000;
+const port = 4004;
 
-app.listen(port, function () {
+app.listen(process.env.PORT, function () {
   console.log("Server running on port 4000");
 });
 
