@@ -1,3 +1,4 @@
+import {BrowserRouter as Router , Route,Routes,link} from "react"
 import React, { useState } from "react";
 import Navbar from "./conponents/Navbar";
 import SignUp from "./conponents/Signup";
