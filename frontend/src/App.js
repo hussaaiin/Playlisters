@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./conponents/Navbar";
+import SignUp from "./conponents/Signup";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -12,6 +13,8 @@ function App() {
   return (
     <div>
       <Navbar />
+      <SignUp />
+
       {/* <button>login</button>
       <button>signup</button>
       <input
