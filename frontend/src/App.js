@@ -18,7 +18,7 @@ function App() {
   const handleCallbackResponse = (response) => {
     console.log("JWT Encoded ID Token: " + response.credential);
     let userObject = jwt_decode(response.credential);
-    log(userObject);
+    console.log(userObject);
     setUser(userObject);
     document.getElementById("signindiv").hidden = true;
   };

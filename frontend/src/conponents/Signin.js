@@ -116,26 +116,6 @@ const WhiteOutlinedTextField = styled(TextField)({
 });
 
 export default function SignIn() {
-  const handleCallbackResponse = (response) => {
-    console.log("JWT Encoded ID Token: " + response.credential);
-    let userObject = jwt_decode(response.credential);
-    log(userObject);
-  };
-
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id:
-        "640754232014-kcvb7kgppvdq3ln760ga0tbv6u9q1b6h.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(document.getElementById("signindiv"), {
-      theme: "outline",
-      size: "large ",
-    });
-  }, []);
-
   return (
     <SignInContainer maxWidth="100%">
       <Grid container>
@@ -176,7 +156,6 @@ export default function SignIn() {
               <SignInButton variant="contained" fullWidth>
                 Sign In
               </SignInButton>
-              <div id="signindiv"></div>
             </SignInForm>
             <SignInFooter container spacing={2}>
               <Grid item xs>
